@@ -7,7 +7,6 @@ import {
   ScrollView,
   TouchableOpacity,
   Share,
-  Linking,
   Dimensions,
   Image,
   FlatList,
@@ -20,6 +19,7 @@ import { PillButton } from '../../components/PillButton';
 import { FloatingHeader } from '../../components/FloatingHeader';
 import { DecorativeDots } from '../../components/DecorativeDots';
 import { WhiteCard } from '../../components/WhiteCard';
+import { YoutubePlayer } from '../../components/YoutubePlayer';
 import { useInstitutions } from '../../contexts/InstitutionsContext';
 import { useThemeColors } from '../../contexts/ThemeContext';
 import { Instituicao } from '../../data/localData';
@@ -129,13 +129,19 @@ export default function InstitutionDetailScreen() {
           )}
 
           {youtubeId && (
-            <TouchableOpacity
-              style={styles.videoBtn}
-              onPress={() => Linking.openURL(inst.video_youtube)}
-            >
-              <Ionicons name="logo-youtube" size={20} color="#FF0000" />
-              <Text style={[styles.videoBtnText, { color: c.text }]}>Assistir ao vídeo institucional</Text>
-            </TouchableOpacity>
+            <View style={styles.videoSection}>
+              <View style={styles.videoLabelRow}>
+                <Ionicons name="logo-youtube" size={18} color="#FF0000" />
+                <Text style={[styles.videoBtnText, { color: c.text }]}>
+                  Vídeo institucional
+                </Text>
+              </View>
+              <YoutubePlayer
+                videoId={youtubeId}
+                width={MEDIA_WIDTH}
+                style={styles.videoPlayer}
+              />
+            </View>
           )}
         </View>
 
@@ -220,15 +226,10 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   pageDot: { width: 8, height: 8, borderRadius: 4 },
-  videoBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
-    marginTop: 12,
-    marginHorizontal: 20,
-  },
+  videoSection: { marginTop: 16, marginHorizontal: 20, gap: 8 },
+  videoLabelRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   videoBtnText: { ...Typography.labelLarge },
+  videoPlayer: { alignSelf: 'center' },
   descCard: { marginHorizontal: 20, gap: 8 },
   descTitle: { ...Typography.titleMedium },
   descLocation: { ...Typography.bodySmall },

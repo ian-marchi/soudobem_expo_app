@@ -86,8 +86,8 @@ export default function DoacoesScreen() {
           <Text style={[styles.pageTitle, { color: c.text }]}>Minhas Doações</Text>
         </View>
 
-        {/* Hero card laranja */}
-        <View style={[styles.hero, { backgroundColor: c.orange }]}>
+        {/* Hero card azul */}
+        <View style={[styles.hero, { backgroundColor: c.turquoiseStrong }]}>
           <View style={styles.heroTopRow}>
             <View>
               <Text style={styles.heroLabel}>Total doado</Text>
@@ -126,7 +126,7 @@ export default function DoacoesScreen() {
                 style={[styles.segmentBtn, active && { backgroundColor: c.card, ...Shadows.card }]}
                 onPress={() => setPeriodo(p.key)}
               >
-                <Text style={[styles.segmentText, { color: active ? c.orange : c.textMuted }]}>
+                <Text style={[styles.segmentText, { color: active ? c.turquoiseStrong : c.textMuted }]}>
                   {p.label}
                 </Text>
               </TouchableOpacity>
@@ -146,7 +146,7 @@ export default function DoacoesScreen() {
               Faça login para ver seu histórico.
             </Text>
             <TouchableOpacity onPress={() => router.push('/auth')}>
-              <Text style={[styles.link, { color: c.orange }]}>Entrar</Text>
+              <Text style={[styles.link, { color: c.turquoiseStrong }]}>Entrar</Text>
             </TouchableOpacity>
           </View>
         ) : filtered.length === 0 ? (
@@ -156,7 +156,7 @@ export default function DoacoesScreen() {
               Nenhuma atividade neste período.{'\n'}Que tal começar agora?
             </Text>
             <TouchableOpacity onPress={() => router.push('/(tabs)/explorar')}>
-              <Text style={[styles.link, { color: c.orange }]}>Explorar causas</Text>
+              <Text style={[styles.link, { color: c.turquoiseStrong }]}>Explorar causas</Text>
             </TouchableOpacity>
           </View>
         ) : (
@@ -170,7 +170,7 @@ export default function DoacoesScreen() {
                     <View
                       style={[
                         styles.timelineDot,
-                        { backgroundColor: isPix ? c.orange : c.turquoiseStrong },
+                        { backgroundColor: isPix ? c.turquoiseStrong : c.turquoise },
                       ]}
                     >
                       <Ionicons
@@ -191,7 +191,7 @@ export default function DoacoesScreen() {
                         {r.instituicao_nome}
                       </Text>
                       {isPix && r.valor != null && (
-                        <Text style={[styles.timelineValue, { color: c.orange }]}>
+                        <Text style={[styles.timelineValue, { color: c.turquoiseStrong }]}>
                           {formatBRL(r.valor)}
                         </Text>
                       )}
